@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos y configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiMapR</title>
+    
+  <!-- Bootstrap 5 CSS (CDN) -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado principal -->
+    <header id="banner" class="banner">
+        <h1 id="main-title">MultiMapR Project</h1>
+        <p class="subtitle">Software para Análisis Filogenético en Paleontología</p>
+        <p id="presentation">
+            Desarrollo de herramientas computacionales especializadas para la visualización, 
+            mapeo y reconstrucción de múltiples estados ancestrales en filogenias. 
+            Investigación enfocada en facilitar el estudio de convergencias evolutivas, 
+            paralelismos morfológicos y análisis de rasgos en clados fósiles.
+        </p>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#banner">🦴 MultiMapR</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#proyecto">El Proyecto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#caracteristicas">Características</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tecnologias">Tecnologías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#equipo">Equipo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacto">Contacto</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+      
+    <main role="main" class="container my-5">
+        <!-- Sección sobre el proyecto -->
+        <section id="proyecto" class="container mt-5">
+            <h2>🔬 Sobre MultiMapR</h2>
+            <div class="highlight-box">
+                <p><strong>Problemática:</strong> Los programas actuales para mapeo de caracteres discretos sobre filogenias 
+                (como WinClada o TreeSearch) se limitan a visualizar un solo carácter a la vez, lo cual representa 
+                una limitante significativa para la investigación moderna que requiere análisis simultáneos de múltiples rasgos.</p>
+            </div>
+            
+            <h3>Objetivos del Proyecto</h3>
+            <ul>
+                <li><strong>Mapeo simultáneo:</strong> Visualizar y reconstruir múltiples caracteres morfológicos de manera simultánea sobre una filogenia</li>
+                <li><strong>Accesibilidad:</strong> Interfaz intuitiva diseñada para investigadores sin experiencia en programación</li>
+                <li><strong>Flexibilidad:</strong> Múltiples opciones de personalización y representación gráfica</li>
+                <li><strong>Rigor científico:</strong> Implementación del algoritmo de Fitch para reconstrucciones ancestrales</li>
+            </ul>
+
+            <h3>Aplicaciones en Investigación</h3>
+            <div class="card">
+                <p><strong>Estudios de Convergencia Evolutiva:</strong> Identificar rasgos que evolucionaron independientemente en diferentes linajes</p>
+            </div>
+            <div class="card">
+                <p><strong>Análisis de Paralelismos:</strong> Rastrear el origen y distribución de características morfológicas específicas</p>
+            </div>
+            <div class="card">
+                <p><strong>Regresiones Evolutivas:</strong> Detectar pérdida de rasgos a lo largo de la historia evolutiva</p>
+            </div>
+            <div class="card">
+                <p><strong>Distribución de Caracteres:</strong> Analizar patrones dentro y entre diferentes clados</p>
+            </div>
+        </section>
+
+        <!-- Características técnicas -->
+        <section id="caracteristicas" class="container mt-5">
+            <h2>⚙️ Características Principales</h2>
+            
+            <h3>Archivos de Entrada</h3>
+            <ul>
+                <li><strong>Filogenia:</strong> Formato parentético (.tree)</li>
+                <li><strong>Datos de caracteres:</strong> Archivo CSV con nombres de terminales y caracteres de interés</li>
+            </ul>
+
+            <h3>Métodos de Reconstrucción</h3>
+            <div class="card">
+                <h4>Algoritmo de Fitch</h4>
+                <p>Implementación completa del algoritmo de parsimonia que permite:</p>
+                <ul>
+                    <li>Reconstrucciones no ambiguas</li>
+                    <li>ACCTRAN (transformaciones aceleradas)</li>
+                    <li>DELTRAN (transformaciones desaceleradas)</li>
+                </ul>
+            </div>
+
+            <h3>Opciones de Visualización</h3>
+            <ul>
+                <li>Caracteres en columnas al final de las terminales</li>
+                <li>Visualización de estados específicos en toda la filogenia</li>
+                <li>Mapeo y reconstrucción de estados a lo largo de las ramas</li>
+                <li>Paletas de colores personalizables</li>
+                <li>Ajuste de grosor de ramas</li>
+                <li>Múltiples representaciones gráficas del árbol</li>
+            </ul>
+        </section>
+
+        <!-- Tecnologías -->
+        <section id="tecnologias" class="container mt-5">
+            <h2>💻 Stack Tecnológico</h2>
+            
+            <h3>Lenguaje Principal</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>R</h4>
+                    <p>Lenguaje estadístico especializado</p>
+                </div>
+            </div>
+
+            <h3>Habilidades Técnicas del Equipo</h3>
+            <div class="tech-grid">
+                <div class="tech-item">JavaScript</div>
+                <div class="tech-item">Java</div>
+                <div class="tech-item">Python</div>
+                <div class="tech-item">Prolog</div>
+                <div class="tech-item">Haskell</div>
+                <div class="tech-item">Git</div>
+                <div class="tech-item">HTML5</div>
+                <div class="tech-item">CSS3</div>
+                <div class="tech-item">MySQL</div>
+                <div class="tech-item">React</div>
+                <div class="tech-item">Flask</div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Estado actual:</strong> El programa se encuentra en etapa de pruebas y próximamente será 
+                lanzado como una librería oficial de R, disponible para la comunidad científica internacional.</p>
+            </div>
+        </section>
+
+        <!-- Equipo de investigación -->
+        <section id="equipo" class="container mt-5">
+            <h2>👥 Equipo de Investigación</h2>
+            
+            <div class="card">
+                <h3>Kevin Isaac Alcántara Estrada</h3>
+                <p><strong>Rol:</strong> Desarrollador Principal</p>
+                <p><strong>Formación:</strong> Licenciatura en Ciencias de la Computación</p>
+                <p><strong>Institución:</strong> Facultad de Ciencias, Universidad Nacional Autónoma de México</p>
+                <p><strong>Correo:</strong> isaac.ae@ciencias.unam.mx</p>
+            </div>
+
+            <div class="card">
+                <h3>Jatziri Linares Ríos</h3>
+                <p><strong>Rol:</strong> Co-desarrolladora</p>
+                <p><strong>Formación:</strong> Licenciatura en Ciencias de la Computación</p>
+                <p><strong>Institución:</strong> Facultad de Ciencias, UNAM</p>
+            </div>
+
+            <div class="card">
+                <h3>Dr. Jesús Alberto Díaz Cruz</h3>
+                <p><strong>Rol:</strong> Asesor Científico</p>
+                <p><strong>Afiliaciones:</strong></p>
+                <ul>
+                    <li>Facultad de Ciencias, UNAM</li>
+                    <li>Departamento de Paleontología, Instituto de Geología, UNAM</li>
+                </ul>
+            </div>
+
+            <h3>Colaboraciones Institucionales</h3>
+            <ul>
+                <li>Facultad de Ciencias, UNAM</li>
+                <li>Instituto de Geología, UNAM</li>
+                <li>Departamento de Paleontología</li>
+            </ul>
+        </section>
+
+        <!-- Idiomas -->
+        <section id="languages" class="container mt-5">
+            <h2>🌍 Capacidades Lingüísticas</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Idioma</th>
+                        <th>Nivel de Dominio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Español</td>
+                        <td>Nativo</td>
+                    </tr>
+                    <tr>
+                        <td>Inglés</td>
+                        <td>Avanzado</td>
+                    </tr>
+                    <tr>
+                        <td>Alemán</td>
+                        <td>Básico</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>Capacidad para colaboración internacional y presentación en congresos científicos.</em></p>
+        </section>
+
+        <!-- Formulario de contacto -->
+        <section id="contacto" class="container mt-5">
+            <h2>📧 Contacto</h2>
+            <p>Para consultas sobre el proyecto, colaboraciones o acceso a versiones de prueba:</p>
+            <form action="#" method="POST">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Su nombre completo" class="form-control mb-3">
+                
+                <label for="institucion">Institución:</label>
+                <input type="text" id="institucion" name="institucion" placeholder="Universidad o centro de investigación" class="form-control mb-3">
+                
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required placeholder="ejemplo@universidad.edu" class="form-control mb-3">
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Describa su consulta o interés en el proyecto" class="form-control mb-3"></textarea>
+                
+                <p><strong>Motivo de contacto:</strong></p>
+                <div class="row d-flex align-items-center mb-3">
+                    <div class="col-auto">
+                        <input type="radio" id="colaboracion" name="motivo" value="Colaboración" required>
+                        <label for="colaboracion">Colaboración</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="radio" id="uso" name="motivo" value="Uso académico">
+                        <label for="uso">Uso académico</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="radio" id="consulta" name="motivo" value="Consulta técnica">
+                        <label for="consulta">Consulta técnica</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-custom">Enviar mensaje</button>
+            </form>
+        </section>
+
+        <!-- Enlaces -->
+        <section id="enlaces" class="container mt-5">
+            <h2>🔗 Enlaces Profesionales</h2>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/kevin-isaac-alcantara-estrada/" target="_blank" class="link">LinkedIn - Kevin Isaac Alcántara</a></li>
+                <li><a href="https://github.com/IsaacAE" target="_blank" class="link">GitHub - Repositorio del Proyecto</a></li>
+                <li><a href="https://www.fciencias.unam.mx/" target="_blank" class="link">Facultad de Ciencias, UNAM</a></li>
+                <li><a href="http://www.geologia.unam.mx/" target="_blank" class="link">Instituto de Geología, UNAM</a></li>
+            </ul>
+        </section>
+    </main>
+    
+    <!-- Pie de página -->
+    <footer id="footer">
+        <p><strong>© 2025 MultiMapR Project - Desarrollo de Software Científico</strong></p>
+        <p>Facultad de Ciencias & Instituto de Geología, UNAM</p>
+        <p><em>"Avanzando en la comprensión de la evolución morfológica a través de la bioinformática"</em></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
