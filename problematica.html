@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problemática - MultiMapR</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos Mobile First para Problemática */
+        
+        /* Contenedor de problema destacado */
+        .problem-box {
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.1), rgba(160, 130, 109, 0.1));
+            border-left: 5px solid #c0392b;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(192, 57, 43, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .problem-box {
+                padding: 2rem;
+            }
+        }
+
+        /* Contenedor de solución */
+        .solution-box {
+            background: linear-gradient(135deg, rgba(107, 142, 35, 0.1), rgba(85, 107, 47, 0.1));
+            border-left: 5px solid var(--color-accent);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(107, 142, 35, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .solution-box {
+                padding: 2rem;
+            }
+        }
+
+        /* Estilos para imágenes comparativas - Mobile First */
+        .image-container {
+            width: 100%;
+            margin: 1.5rem 0;
+            padding: 0;
+        }
+
+        .figure-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid var(--color-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            padding: 0.5rem;
+        }
+
+        .figure-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        @media (min-width: 768px) {
+            .figure-image {
+                padding: 1rem;
+            }
+        }
+
+        .figure-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--color-accent-hover);
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            padding: 0 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .figure-caption {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* Grid para imágenes comparativas */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        /* Imagen destacada (la solución) */
+        .featured-image {
+            grid-column: 1 / -1;
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+
+        /* Lista de problemas */
+        .problem-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .problem-list li {
+            padding: 1rem;
+            margin: 0.75rem 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-left: 4px solid #e74c3c;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .problem-list li:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateX(5px);
+        }
+
+        .problem-list li::before {
+            content: "❌ ";
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Lista de software actual */
+        .software-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .software-list li {
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.8);
+            border-left: 3px solid var(--color-secondary);
+            border-radius: 5px;
+        }
+
+        .software-list li strong {
+            color: var(--color-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Sección de objetivo */
+        .objective-highlight {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(107, 142, 35, 0.3);
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .objective-highlight {
+                padding: 2.5rem;
+            }
+        }
+
+        .objective-highlight h2 {
+            color: white;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        /* Placeholders para imágenes */
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            border: 2px dashed var(--color-secondary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Badges de estado */
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .badge-limitation {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .badge-current {
+            background: #f39c12;
+            color: white;
+        }
+
+        .badge-solution {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Iconos grandes */
+        .big-icon {
+            font-size: 3rem;
+            display: block;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 576px) {
+            .big-icon {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header id="banner" class="banner">
+        <h1 id="main-title">Problemática y Motivación</h1>
+        <p class="subtitle">¿Por qué necesitamos MultiMapR?</p>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="index.html">🦴 MultiMapR</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="problematica.html">Problemática</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ejemplos.html">Ejemplos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="referencias.html">Referencias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+      
+    <main role="main" class="container my-5">
+        <!-- Contexto de la Investigación -->
+        <section class="container mt-5">
+            <h2>🔬 Contexto: Análisis Filogenético Morfológico</h2>
+            
+            <div class="card">
+                <p>El estudio de la evolución morfológica a menudo requiere la <strong>reconstrucción y el mapeo de estados de carácter</strong> 
+                sobre una filogenia para entender la historia evolutiva de los rasgos morfológicos discretos.</p>
+                
+                <h3 class="mt-4">¿Para qué sirve el mapeo de caracteres?</h3>
+                <p>El mapeo filogenético nos permite:</p>
+                <ul>
+                    <li><strong>Distinguir convergencias evolutivas:</strong> Identificar cuando la misma condición aparece independientemente en linajes diferentes (homoplasias)</li>
+                    <li><strong>Identificar sinapomorfías:</strong> Reconocer caracteres que aparecen en el ancestro y son heredados a todos los descendientes (homologías)</li>
+                    <li><strong>Rastrear la evolución de rasgos:</strong> Visualizar cómo cambian las características morfológicas a lo largo del tiempo evolutivo</li>
+                    <li><strong>Analizar patrones evolutivos:</strong> Detectar paralelismos, reversiones y tendencias direccionales</li>
+                </ul>
+            </div>
+
+			<div class="image-wrapper">
+                    <img src="images/usos.png" 
+                         alt="Propósito análisis de caracteres morfológicos" 
+                         class="result-image zoomable"
+                         loading="lazy">
+                    <p class="image-caption">Figura 7: Usos del mapeo de caracteres</p>
+                </div>
+
+            <div class="highlight-box">
+                <p class="big-icon">🌳</p>
+                <p><strong>Principio fundamental:</strong> El mapeo de caracteres sobre filogenias utiliza el principio de 
+                <em>máxima parsimonia</em>, minimizando el número de cambios evolutivos necesarios para explicar 
+                la distribución observada de rasgos morfológicos.</p>
+            </div>
+        </section>
+
+        <!-- Software Actual -->
+        <section class="container mt-5">
+            <h2>💻 Panorama Actual del Software</h2>
+            
+            <div class="card">
+                <h3>Herramientas Disponibles</h3>
+                <p>Actualmente existen diversas herramientas que permiten el mapeo y la reconstrucción de estados ancestrales usando parsimonia:</p>
+                
+                <ul class="software-list">
+                    <li>
+                        <strong>Mesquite</strong>
+                        <p class="text-muted mb-0">Permite mapear dos caracteres, pero requiere contrastar dos filogenias separadas</p>
+                    </li>
+                    <li>
+                        <strong>WinClada</strong>
+                        <p class="text-muted mb-0">Software tradicional limitado a visualización de un carácter por análisis</p>
+                    </li>
+                    <li>
+                        <strong>TNT (Tree Analysis Using New Technology)</strong>
+                        <p class="text-muted mb-0">Potente para análisis cladístico pero con visualización limitada de estados múltiples</p>
+                    </li>
+                    <li>
+                        <strong>Paquetes de R (phangorn, TreeSearch)</strong>
+                        <p class="text-muted mb-0">Flexibles pero requieren programación avanzada y conocimiento profundo de R</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Imágenes comparativas del software actual -->
+            <div class="comparison-grid">
+                <div class="image-container">
+                    <!-- Imagen 1: Software limitado ejemplo 1 -->
+                    <img src="images/trad.png" 
+                         alt="Limitación en software actual - mapeo de un solo carácter" 
+                         class="figure-image"
+                         loading="lazy">
+                    <!-- Placeholder si no hay imagen -->
+                    <!-- <div class="image-placeholder">
+                        <div>
+                            <p><strong>Imagen 1</strong></p>
+                            <p>Ejemplo de software actual mostrando limitación de mapeo de un solo carácter</p>
+                            <p class="text-muted small">(Ej: WinClada o TNT)</p>
+                        </div>
+                    </div> -->
+                    <p class="figure-caption">
+                        Figura 8: Software tradicional mostrando mapeo limitado a un único carácter por visualización
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <!-- Imagen 2: Software limitado ejemplo 2 -->
+                    <img src="images/mesquite.png" 
+                         alt="Limitación en multimapeo" 
+                         class="figure-image"
+                         loading="lazy">
+                    <!-- Placeholder si no hay imagen -->
+                    <!-- <div class="image-placeholder">
+                        <div>
+                            <p><strong>Imagen 2</strong></p>
+                            <p>Interfaz compleja de programación requerida en R para análisis múltiples</p>
+                            <p class="text-muted small">(Código de phangorn o TreeSearch)</p>
+                        </div>
+                    </div> -->
+                    <p class="figure-caption">
+                        Figura 9: Multimapeo en Mesquite (contraste de filogenias mapeadas)
+                    </p>
+                </div>
+
+				<div class="image-container">
+                    <!-- Imagen 2: Software limitado ejemplo 2 -->
+                    <img src="images/trad2.png" 
+                         alt="Softwares similares" 
+                         class="figure-image"
+                         loading="lazy">
+                    <!-- Placeholder si no hay imagen -->
+                    <!-- <div class="image-placeholder">
+                        <div>
+                            <p><strong>Imagen 2</strong></p>
+                            <p>Interfaz compleja de programación requerida en R para análisis múltiples</p>
+                            <p class="text-muted small">(Código de phangorn o TreeSearch)</p>
+                        </div>
+                    </div> -->
+                    <p class="figure-caption">
+                        Figura 10: Multimapeo con programa, poco personalizable
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- La Problemática Central -->
+        <section class="container mt-5">
+            <h2>⚠️ La Limitación Principal</h2>
+            
+            <div class="problem-box">
+                <p class="big-icon">🚫</p>
+                <h3 style="color: #c0392b; text-align: center;">
+                    Los programas actuales sólo permiten mapear un único carácter a la vez
+                </h3>
+                <p class="text-center mt-3" style="font-size: 1.1rem;">
+                    Esta restricción fundamental dificulta la visualización y el análisis comparativo en investigaciones modernas
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Preguntas Sin Respuesta en el Software Actual</h3>
+                <ul class="problem-list">
+                    <li>
+                        <strong>¿Qué pasa si quiero mapear más de un carácter de manera simultánea?</strong>
+                        <p class="text-muted mb-0">Los programas tradicionales no ofrecen esta funcionalidad integrada</p>
+                    </li>
+                    <li>
+                        <strong>¿Qué pasa si quiero representar una filogenia con estilo de abanico (fan)?</strong>
+                        <p class="text-muted mb-0">Opciones de visualización limitadas en la mayoría del software</p>
+                    </li>
+                    <li>
+                        <strong>¿Qué pasa si quiero personalizar los colores de los estados?</strong>
+                        <p class="text-muted mb-0">Paletas de colores predefinidas sin opciones de customización</p>
+                    </li>
+                    <li>
+                        <strong>¿Cómo puedo hacer esto sin ser experto en programación?</strong>
+                        <p class="text-muted mb-0">Las soluciones en R requieren conocimiento avanzado de programación y manejo de datos filogenéticos</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Consecuencias de estas Limitaciones</h3>
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="highlight-box">
+                            <h4>⏱️ Pérdida de Tiempo</h4>
+                            <p>Necesidad de generar múltiples visualizaciones separadas para comparar caracteres</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="highlight-box">
+                            <h4>🔍 Análisis Fragmentado</h4>
+                            <p>Dificultad para detectar patrones complejos que requieren visualización simultánea</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="highlight-box">
+                            <h4>📊 Presentación Limitada</h4>
+                            <p>Complicaciones para comunicar resultados de manera efectiva en publicaciones</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="highlight-box">
+                            <h4>💻 Barrera Técnica</h4>
+                            <p>Exclusión de investigadores sin formación avanzada en programación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- La Solución: MultiMapR -->
+        <section class="container mt-5">
+            <h2>✨ Nuestra Solución: MultiMapR</h2>
+            
+            <div class="objective-highlight">
+                <p class="big-icon">🎯</p>
+                <h2>Nuestro Objetivo</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    Crear una herramienta de software <strong>interactiva y amigable con el usuario final</strong>, 
+                    diseñada para mapear, reconstruir y visualizar <strong>múltiples caracteres morfológicos discretos 
+                    de manera simultánea</strong>, todo basado en el <strong>principio de máxima parsimonia</strong>.
+                </p>
+            </div>
+
+            <!-- Imagen principal: La solución -->
+            <div class="image-container featured-image">
+                <!-- Imagen 3: MultiMapR en acción -->
+                <img src="images/ejemplo1.png" 
+                     alt="MultiMapR mostrando mapeo simultáneo de múltiples caracteres" 
+                     class="figure-image"
+                     loading="lazy">
+                <!-- Placeholder si no hay imagen -->
+                <!-- <div class="image-placeholder" style="min-height: 400px;">
+                    <div>
+                        <p class="big-icon">🌟</p>
+                        <p><strong>Imagen 3: La Solución - MultiMapR</strong></p>
+                        <p>Visualización de MultiMapR mostrando mapeo simultáneo de múltiples caracteres con opciones de personalización</p>
+                        <p class="text-muted small">(Filogenia con 5+ caracteres mapeados simultáneamente, diferentes estilos de visualización, paleta personalizada)</p>
+                    </div>
+                </div> -->
+                <p class="figure-caption">
+                    Figura 3: MultiMapR permite la visualización simultánea de múltiples caracteres con total flexibilidad en personalización y estilos de representación
+                </p>
+            </div>
+
+            <div class="solution-box">
+                <h3>¿Qué hace diferente a MultiMapR?</h3>
+                <div class="row mt-3">
+                    <div class="col-md-6 mb-3">
+                        <span class="badge-solution">✓ Mapeo Múltiple</span>
+                        <p class="mt-2">Visualización simultánea de todos los caracteres que necesites</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <span class="badge-solution">✓ Interfaz Amigable</span>
+                        <p class="mt-2">Sin necesidad de conocimientos avanzados de programación</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <span class="badge-solution">✓ Personalización Total</span>
+                        <p class="mt-2">Colores, estilos de árbol (abanico, rectangular, circular) y más</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <span class="badge-solution">✓ Rigor Científico</span>
+                        <p class="mt-2">Implementación del algoritmo de Fitch con ACCTRAN/DELTRAN</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <span class="badge-solution">✓ Código Abierto</span>
+                        <p class="mt-2">Librería de R accesible para toda la comunidad científica</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <span class="badge-solution">✓ Análisis Integrado</span>
+                        <p class="mt-2">Visualización y reconstrucción en un solo flujo de trabajo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Impacto en la Investigación</h3>
+                <p>MultiMapR transforma la manera en que los paleontólogos y biólogos evolutivos pueden:</p>
+                <ul>
+                    <li><strong>Identificar convergencias:</strong> Detectar patrones de evolución paralela con mayor facilidad</li>
+                    <li><strong>Analizar complejos de caracteres:</strong> Estudiar la evolución coordinada de múltiples rasgos</li>
+                    <li><strong>Comunicar resultados:</strong> Generar figuras de publicación de alta calidad</li>
+                    <li><strong>Democratizar el análisis:</strong> Hacer accesible el análisis filogenético avanzado a más investigadores</li>
+                    <li><strong>Acelerar la investigación:</strong> Reducir el tiempo necesario para análisis comparativos complejos</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Estado Actual del Desarrollo -->
+        <section class="container mt-5">
+            <h2>🚀 Estado del Proyecto</h2>
+            
+            <div class="card">
+                <h3>Progreso Actual</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <span class="badge-solution" style="font-size: 1.1rem; padding: 0.75rem 1.5rem;">Fase Beta</span>
+                            <p class="mt-3">El software está en pruebas finales con usuarios reales</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <span class="badge-current" style="font-size: 1.1rem; padding: 0.75rem 1.5rem;">Documentación</span>
+                            <p class="mt-3">Creación de manuales y tutoriales para usuarios</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="text-center">
+                            <span class="badge-solution" style="font-size: 1.1rem; padding: 0.75rem 1.5rem;">2026</span>
+                            <p class="mt-3">Lanzamiento previsto como paquete oficial de R</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    
+    <!-- Pie de página -->
+    <footer id="footer">
+        <p><strong>© 2025 MultiMapR Project - Desarrollo de Software Científico</strong></p>
+        <p>Facultad de Ciencias & Instituto de Geología, UNAM</p>
+        <p><em>"Avanzando en la comprensión de la evolución morfológica a través de la bioinformática"</em></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script para zoom en imágenes -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.figure-image');
+            
+            images.forEach(img => {
+                img.style.cursor = 'zoom-in';
+                
+                img.addEventListener('click', function() {
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.95);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 9999;
+                        cursor: zoom-out;
+                        padding: 20px;
+                    `;
+                    
+                    const zoomedImg = document.createElement('img');
+                    zoomedImg.src = this.src;
+                    zoomedImg.alt = this.alt;
+                    zoomedImg.style.cssText = `
+                        max-width: 95%;
+                        max-height: 95%;
+                        object-fit: contain;
+                        border-radius: 8px;
+                        box-shadow: 0 0 30px rgba(255,255,255,0.3);
+                    `;
+                    
+                    overlay.appendChild(zoomedImg);
+                    document.body.appendChild(overlay);
+                    
+                    overlay.addEventListener('click', function() {
+                        document.body.removeChild(overlay);
+                    });
+                    
+                    document.addEventListener('keydown', function closeOnEsc(e) {
+                        if (e.key === 'Escape' && document.body.contains(overlay)) {
+                            document.body.removeChild(overlay);
+                            document.removeEventListener('keydown', closeOnEsc);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

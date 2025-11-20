@@ -6,6 +6,165 @@
     <title>Referencias - MultiMapR</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos Mobile First para Referencias */
+        
+        /* Tarjetas de equipo responsive */
+        .team-card {
+            background: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--color-accent);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 768px) {
+            .team-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Grid responsive para equipo */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Estilos para referencias bibliográficas */
+        .reference-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--color-fossil);
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .reference-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .reference-card h4 {
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .reference-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-border);
+            margin: 0;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        @media (min-width: 768px) {
+            .reference-card {
+                padding: 1.5rem;
+            }
+            
+            .reference-text {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* Bloques de código responsive */
+        .code-block {
+            background: #f5f5f5;
+            padding: 0.75rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            border: 1px solid var(--color-light);
+        }
+
+        @media (min-width: 768px) {
+            .code-block {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .code-block {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Mejora para listas en móvil */
+        .reference-card ul {
+            padding-left: 1.25rem;
+            margin: 0.5rem 0;
+        }
+
+        .reference-card li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 576px) {
+            .reference-card ul {
+                padding-left: 1rem;
+            }
+        }
+
+        /* Iconos y badges */
+        .badge-custom {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* Enlaces responsive */
+        .link {
+            word-break: break-word;
+            display: inline-block;
+        }
+
+        /* Scroll suave para código */
+        .code-block::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .code-block::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .code-block::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 10px;
+        }
+
+        .code-block::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent-hover);
+        }
+    </style>
 </head>
 <body>
     <!-- Encabezado -->
@@ -25,6 +184,9 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Inicio</a>
             </li>
+               <li class="nav-item">
+              <a class="nav-link" href="problematica.html">Problemática</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="ejemplos.html">Ejemplos</a>
             </li>
@@ -41,38 +203,37 @@
     <main role="main" class="container my-5">
         <!-- Enlaces Profesionales del Equipo -->
         <section class="container mt-5">
-            <h2>🔗 Enlaces Profesionales del Equipo</h2>
+            <h2>🔗 Equipo de Desarrollo</h2>
             
-            <div class="card">
-                <h3>Kevin Isaac Alcántara Estrada</h3>
-                <p><strong>Desarrollador Principal</strong></p>
-                <ul>
-                    <li><a href="https://www.linkedin.com/in/kevin-isaac-alcantara-estrada/" target="_blank" class="link">
-                        🔷 LinkedIn - Perfil Profesional
-                    </a></li>
-                    <li><a href="https://github.com/IsaacAE" target="_blank" class="link">
-                        💻 GitHub - Repositorios de Código
-                    </a></li>
-                    <li><strong>Email:</strong> <a href="mailto:isaac.ae@ciencias.unam.mx" class="link">isaac.ae@ciencias.unam.mx</a></li>
-                </ul>
-            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3>Alcántara Estrada Kevin Isaac</h3>
+                    <span class="badge-custom">Desarrollador</span>
+                    <ul class="mt-3">
+                        <li><strong>Formación:</strong> Licenciatura en Ciencias de la Computación</li>
+                        <li><strong>Institución:</strong> Facultad de Ciencias, UNAM</li>
+                        <li><strong>Email:</strong> <a href="mailto:isaac.ae@ciencias.unam.mx" class="link">isaac.ae@ciencias.unam.mx</a></li>
+                    </ul>
+                </div>
 
-            <div class="card">
-                <h3>Jatziri Linares Ríos</h3>
-                <p><strong>Co-desarrolladora</strong></p>
-                <ul>
-                    <li><strong>Institución:</strong> Facultad de Ciencias, UNAM</li>
-                    <li><strong>Área:</strong> Ciencias de la Computación</li>
-                </ul>
-            </div>
+                <div class="team-card">
+                    <h3>Linares Ríos Jatziri</h3>
+                    <span class="badge-custom">Desarrolladora</span>
+                    <ul class="mt-3">
+                        <li><strong>Formación:</strong> Licenciatura en Ciencias de la Computación</li>
+                        <li><strong>Institución:</strong> Facultad de Ciencias, UNAM</li>
+                    </ul>
+                </div>
 
-            <div class="card">
-                <h3>Dr. Jesús Alberto Díaz Cruz</h3>
-                <p><strong>Asesor Científico</strong></p>
-                <ul>
-                    <li><strong>Departamento:</strong> Paleontología, Instituto de Geología, UNAM</li>
-                    <li><strong>Facultad:</strong> Facultad de Ciencias, UNAM</li>
-                </ul>
+                <div class="team-card">
+                    <h3>Dr. Díaz Cruz Jesús Alberto</h3>
+                    <span class="badge-custom">Asesor Científico</span>
+                    <ul class="mt-3">
+                        <li><strong>Departamento:</strong> Paleontología</li>
+                        <li><strong>Institución:</strong> Instituto de Geología, UNAM</li>
+                        <li><strong>Afiliación:</strong> Facultad de Ciencias, UNAM</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -83,166 +244,134 @@
             <div class="card">
                 <h3>Universidad Nacional Autónoma de México (UNAM)</h3>
                 <ul>
-                    <li><a href="https://www.fciencias.unam.mx/" target="_blank" class="link">
-                        🔬 Facultad de Ciencias
-                    </a></li>
-                    <li><a href="http://www.geologia.unam.mx/" target="_blank" class="link">
-                        🌍 Instituto de Geología
-                    </a></li>
-                    <li><a href="http://www.geologia.unam.mx/paleontologia/" target="_blank" class="link">
-                        🦴 Departamento de Paleontología
-                    </a></li>
+                    <li>
+                        <a href="https://www.fciencias.unam.mx/" target="_blank" class="link">
+                            🔬 Facultad de Ciencias
+                        </a>
+                        <p class="text-muted small mb-2">Centro de formación en ciencias básicas y computación</p>
+                    </li>
+                    <li>
+                        <a href="http://www.geologia.unam.mx/" target="_blank" class="link">
+                            🌍 Instituto de Geología
+                        </a>
+                        <p class="text-muted small mb-2">Instituto de investigación en ciencias de la Tierra y paleontología</p>
+                    </li>
+                    <li>
+                        <a href="http://www.geologia.unam.mx/paleontologia/" target="_blank" class="link">
+                            🦕 Departamento de Paleontología
+                        </a>
+                        <p class="text-muted small">Especialización en fósiles y evolución</p>
+                    </li>
                 </ul>
-            </div>
-        </section>
-
-        <!-- Repositorio y Documentación -->
-        <section class="container mt-5">
-            <h2>📦 Repositorio y Documentación</h2>
-            
-            <div class="card">
-                <h3>Código Fuente</h3>
-                <ul>
-                    <li><a href="https://github.com/IsaacAE/MultiMapR" target="_blank" class="link">
-                        🗂️ Repositorio Principal en GitHub
-                    </a></li>
-                    <li><strong>Licencia:</strong> MIT License (pendiente de confirmación)</li>
-                    <li><strong>Estado:</strong> En desarrollo activo</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Documentación Técnica</h3>
-                <ul>
-                    <li>📘 Manual de usuario (en preparación)</li>
-                    <li>📕 Referencia de funciones API</li>
-                    <li>📗 Guía de instalación</li>
-                    <li>📙 Tutoriales paso a paso</li>
-                </ul>
-                <p><em>La documentación completa estará disponible con el lanzamiento oficial de la librería.</em></p>
             </div>
         </section>
 
         <!-- Referencias Bibliográficas -->
         <section class="container mt-5">
-            <h2>📚 Referencias Bibliográficas Clave</h2>
+            <h2>📚 Referencias Bibliográficas</h2>
             
             <div class="highlight-box">
-                <h3>Fundamentos Metodológicos</h3>
+                <p><strong>Fundamentos teóricos y metodológicos de MultiMapR</strong></p>
             </div>
 
-            <div class="card">
-                <h4>Algoritmo de Fitch</h4>
-                <p><strong>Fitch, W. M. (1971).</strong> "Toward defining the course of evolution: minimum change for a specific tree topology." 
-                <em>Systematic Zoology</em>, 20(4), 406-416.</p>
-                <p><strong>Descripción:</strong> Artículo fundamental que describe el algoritmo de parsimonia utilizado 
-                para reconstruir estados ancestrales en filogenias.</p>
+            <div class="reference-card">
+                <h4>📘 Algoritmo de Fitch - Fundamento de Parsimonia</h4>
+                <p class="reference-text">
+                    <strong>Fitch, W. M.</strong> (1971). Toward defining the course of evolution: Minimal change for a specific tree topology. 
+                    <em>Systematic Zoology</em>, <strong>20</strong>(4), 406-416.
+                </p>
+                <p class="text-muted small mt-2">
+                    <strong>Relevancia:</strong> Artículo seminal que describe el algoritmo de parsimonia utilizado para reconstruir estados ancestrales. 
+                    Base metodológica de MultiMapR para la inferencia filogenética.
+                </p>
             </div>
 
-            <div class="card">
-                <h4>Optimización ACCTRAN y DELTRAN</h4>
-                <p><strong>Swofford, D. L., & Maddison, W. P. (1987).</strong> "Reconstructing ancestral character states under Wagner parsimony." 
-                <em>Mathematical Biosciences</em>, 87(2), 199-229.</p>
-                <p><strong>Descripción:</strong> Discusión detallada de los métodos de optimización de caracteres 
-                en árboles filogenéticos.</p>
+            <div class="reference-card">
+                <h4>📗 Reconstrucción de Estados de Carácter</h4>
+                <p class="reference-text">
+                    <strong>Swofford, D. L., & Maddison, W. P.</strong> (1992). Parsimony, character-state reconstructions, and evolutionary inferences. 
+                    In: <em>Systematics, Historical Ecology, and North American Freshwater Fishes</em>, Stanford University Press, pp. 186-223.
+                </p>
+                <p class="text-muted small mt-2">
+                    <strong>Relevancia:</strong> Discusión detallada de métodos de optimización (ACCTRAN/DELTRAN) implementados en MultiMapR.
+                </p>
             </div>
 
-            <div class="highlight-box">
-                <h3>Software Relacionado</h3>
+            <div class="reference-card">
+                <h4>📕 Mesquite - Software de Análisis Evolutivo</h4>
+                <p class="reference-text">
+                    <strong>Maddison, W. P., & Maddison, D. R.</strong> (2007). Mesquite: A modular system for evolutionary analysis, version 2.0. 
+                    <a href="http://mesquiteproject.org" target="_blank" class="link">http://mesquiteproject.org</a>
+                </p>
+                <p class="text-muted small mt-2">
+                    <strong>Relevancia:</strong> Software de referencia para análisis filogenéticos que inspiró funcionalidades de MultiMapR.
+                </p>
             </div>
 
-            <div class="card">
-                <h4>Mesquite</h4>
-                <p><strong>Maddison, W. P., & Maddison, D. R. (2021).</strong> Mesquite: a modular system for evolutionary analysis. Version 3.70.</p>
-                <p><a href="http://www.mesquiteproject.org" target="_blank" class="link">http://www.mesquiteproject.org</a></p>
+            <div class="reference-card">
+                <h4>📙 WinClada - Análisis Cladístico</h4>
+                <p class="reference-text">
+                    <strong>Nixon, K. C.</strong> (2002). WinClada, version 1.00.08. 
+                    Published by the author, Ithaca, New York.
+                </p>
+                <p class="text-muted small mt-2">
+                    <strong>Relevancia:</strong> Software tradicional para mapeo de caracteres discretos. MultiMapR extiende sus capacidades 
+                    permitiendo visualización simultánea de múltiples caracteres.
+                </p>
             </div>
 
-            <div class="card">
-                <h4>Phytools (R package)</h4>
-                <p><strong>Revell, L. J. (2012).</strong> "phytools: an R package for phylogenetic comparative biology (and other things)." 
-                <em>Methods in Ecology and Evolution</em>, 3(2), 217-223.</p>
-                <p><a href="https://github.com/liamrevell/phytools" target="_blank" class="link">GitHub Repository</a></p>
+            <div class="highlight-box mt-4">
+                <p><strong>Software y Paquetes Complementarios</strong></p>
             </div>
 
-            <div class="highlight-box">
-                <h3>Aplicaciones en Paleontología</h3>
+            <div class="reference-card">
+                <h4>🔧 phytools - Herramientas Filogenéticas en R</h4>
+                <p class="reference-text">
+                    <strong>Revell, L. J.</strong> (2012). phytools: An R package for phylogenetic comparative biology (and other things). 
+                    <em>Methods in Ecology and Evolution</em>, <strong>3</strong>(2), 217-223.
+                </p>
+                <p class="text-muted small mt-2">
+                    DOI: <a href="https://doi.org/10.1111/j.2041-210X.2011.00169.x" target="_blank" class="link">10.1111/j.2041-210X.2011.00169.x</a>
+                </p>
             </div>
 
-            <div class="card">
-                <h4>Análisis de Convergencia Evolutiva</h4>
-                <p><strong>Stayton, C. T. (2015).</strong> "The definition, recognition, and interpretation of convergent evolution, 
-                and two new measures for quantifying and assessing the significance of convergence." 
-                <em>Evolution</em>, 69(8), 2140-2153.</p>
+            <div class="reference-card">
+                <h4>🌳 ape - Análisis Filogenético en R</h4>
+                <p class="reference-text">
+                    <strong>Paradis, E., & Schliep, K.</strong> (2019). ape 5.0: An environment for modern phylogenetics and evolutionary analyses in R. 
+                    <em>Bioinformatics</em>, <strong>35</strong>(3), 526-528.
+                </p>
+                <p class="text-muted small mt-2">
+                    DOI: <a href="https://doi.org/10.1093/bioinformatics/bty633" target="_blank" class="link">10.1093/bioinformatics/bty633</a>
+                </p>
             </div>
 
-            <div class="card">
-                <h4>Mapeo de Caracteres Morfológicos</h4>
-                <p><strong>Cunningham, C. W., Omland, K. E., & Oakley, T. H. (1998).</strong> 
-                "Reconstructing ancestral character states: a critical reappraisal." 
-                <em>Trends in Ecology & Evolution</em>, 13(9), 361-366.</p>
-            </div>
-        </section>
-
-        <!-- Recursos Adicionales -->
-        <section class="container mt-5">
-            <h2>🔧 Recursos y Herramientas Complementarias</h2>
-            
-            <div class="card">
-                <h3>Software de Análisis Filogenético</h3>
-                <ul>
-                    <li><a href="http://www.zmuc.dk/public/phylogeny/TNT/" target="_blank" class="link">
-                        TNT (Tree Analysis Using New Technology)
-                    </a></li>
-                    <li><a href="https://www.phylo.org/" target="_blank" class="link">
-                        PAUP* - Phylogenetic Analysis Using Parsimony
-                    </a></li>
-                    <li><a href="https://github.com/TreeSearch/TreeSearch" target="_blank" class="link">
-                        TreeSearch (R package)
-                    </a></li>
-                </ul>
+            <div class="highlight-box mt-4">
+                <p><strong>Estudios de Convergencia y Análisis Morfológico</strong></p>
             </div>
 
-            <div class="card">
-                <h3>Bases de Datos Paleontológicas</h3>
-                <ul>
-                    <li><a href="https://paleobiodb.org/" target="_blank" class="link">
-                        🦕 Paleobiology Database
-                    </a></li>
-                    <li><a href="https://www.morphobank.org/" target="_blank" class="link">
-                        📊 MorphoBank - Matrices de Caracteres
-                    </a></li>
-                </ul>
+            <div class="reference-card">
+                <h4>🔬 Convergencia Evolutiva - Métodos Cuantitativos</h4>
+                <p class="reference-text">
+                    <strong>Stayton, C. T.</strong> (2015). The definition, recognition, and interpretation of convergent evolution, 
+                    and two new measures for quantifying and assessing the significance of convergence. 
+                    <em>Evolution</em>, <strong>69</strong>(8), 2140-2153.
+                </p>
+                <p class="text-muted small mt-2">
+                    DOI: <a href="https://doi.org/10.1111/evo.12729" target="_blank" class="link">10.1111/evo.12729</a>
+                </p>
             </div>
 
-            <div class="card">
-                <h3>Comunidades y Foros</h3>
-                <ul>
-                    <li><a href="https://www.r-phylo.org/" target="_blank" class="link">
-                        R-sig-phylo Mailing List
-                    </a></li>
-                    <li><a href="https://stackoverflow.com/questions/tagged/phylogeny" target="_blank" class="link">
-                        Stack Overflow - Etiqueta Phylogeny
-                    </a></li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Publicaciones del Equipo -->
-        <section class="container mt-5">
-            <h2>📄 Publicaciones y Presentaciones</h2>
-            
-            <div class="highlight-box">
-                <p><strong>Nota:</strong> El proyecto MultiMapR está actualmente en desarrollo. 
-                Las publicaciones y presentaciones en congresos se actualizarán conforme el proyecto avance hacia su lanzamiento oficial.</p>
-            </div>
-
-            <div class="card">
-                <h3>Presentaciones Planificadas</h3>
-                <ul>
-                    <li>Congreso de la Sociedad Paleontológica Mexicana (2025)</li>
-                    <li>Reunión de la Sociedad de Biología Evolutiva (2025)</li>
-                    <li>Simposio Internacional de Métodos Filogenéticos (2026)</li>
-                </ul>
+            <div class="reference-card">
+                <h4>📊 Mapeo de Caracteres Morfológicos</h4>
+                <p class="reference-text">
+                    <strong>Cunningham, C. W., Omland, K. E., & Oakley, T. H.</strong> (1998). 
+                    Reconstructing ancestral character states: A critical reappraisal. 
+                    <em>Trends in Ecology & Evolution</em>, <strong>13</strong>(9), 361-366.
+                </p>
+                <p class="text-muted small mt-2">
+                    DOI: <a href="https://doi.org/10.1016/S0169-5347(98)01382-2" target="_blank" class="link">10.1016/S0169-5347(98)01382-2</a>
+                </p>
             </div>
         </section>
 
@@ -251,29 +380,44 @@
             <h2>📝 Cómo Citar MultiMapR</h2>
             
             <div class="card">
-                <h3>Citación Provisional</h3>
-                <p><strong>Formato sugerido (pendiente de publicación oficial):</strong></p>
-                <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; overflow-x: auto;">
+                <h3>Citación Recomendada</h3>
+                <p><strong>Formato APA (pendiente de publicación oficial):</strong></p>
+                <div class="code-block">
 Alcántara Estrada, K. I., Linares Ríos, J., & Díaz Cruz, J. A. (2025). 
 MultiMapR: An R package for simultaneous visualization and reconstruction 
-of multiple character states on phylogenies. 
-Facultad de Ciencias, Universidad Nacional Autónoma de México.
-                </pre>
+of multiple character states on phylogenies. Facultad de Ciencias, 
+Universidad Nacional Autónoma de México. 
+                </div>
             </div>
 
             <div class="card">
-                <h3>Citación de Software</h3>
-                <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; overflow-x: auto;">
+                <h3>Citación BibTeX</h3>
+                <p><strong>Para documentos LaTeX:</strong></p>
+                <div class="code-block">
 @software{multimapr2025,
-  author = {Alcántara Estrada, Kevin Isaac and 
-            Linares Ríos, Jatziri and 
-            Díaz Cruz, Jesús Alberto},
-  title = {MultiMapR: Multi-character state mapping on phylogenies},
-  year = {2025},
-  url = {https://github.com/IsaacAE/MultiMapR},
-  note = {R package version 0.1.0 (in development)}
+  author       = {Alcántara Estrada, Kevin Isaac and 
+                  Linares Ríos, Jatziri and 
+                  Díaz Cruz, Jesús Alberto},
+  title        = {{MultiMapR: Multi-character state mapping 
+                   on phylogenies}},
+  year         = 2025,
+  publisher    = {GitHub},
+  version      = {0.1.0},
+  note         = {R package version 0.1.0 (in development)}
 }
-                </pre>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Citación en R</h3>
+                <p><strong>Después de instalar el paquete:</strong></p>
+                <div class="code-block">
+# Para obtener la citación actualizada en R
+citation("MultiMapR")
+
+# Para citar en formato BibTeX
+toBibtex(citation("MultiMapR"))
+                </div>
             </div>
         </section>
 
@@ -282,18 +426,78 @@ Facultad de Ciencias, Universidad Nacional Autónoma de México.
             <h2>🙏 Agradecimientos</h2>
             
             <div class="card">
-                <h3>Instituciones</h3>
+                <h3>Apoyo Institucional</h3>
                 <ul>
-                    <li>Universidad Nacional Autónoma de México (UNAM)</li>
-                    <li>Facultad de Ciencias, UNAM</li>
-                    <li>Instituto de Geología, UNAM</li>
-                    <li>Departamento de Paleontología</li>
+                    <li><strong>Universidad Nacional Autónoma de México (UNAM)</strong>
+                        <p class="text-muted small">Institución de educación superior que proporciona recursos e infraestructura</p>
+                    </li>
+                    <li><strong>Facultad de Ciencias, UNAM</strong>
+                        <p class="text-muted small">Formación académica y apoyo técnico en ciencias de la computación</p>
+                    </li>
+                    <li><strong>Instituto de Geología, UNAM</strong>
+                        <p class="text-muted small">Asesoría científica y validación paleontológica</p>
+                    </li>
+                    <li><strong>Departamento de Paleontología</strong>
+                        <p class="text-muted small">Expertise en análisis filogenéticos y datos morfológicos</p>
+                    </li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3>Financiamiento</h3>
-                <p><em>Información sobre becas y apoyos institucionales será actualizada conforme el proyecto avance.</em></p>
+                <h3>Comunidad Científica</h3>
+                <p>Agradecemos a la comunidad de desarrolladores de R y a los investigadores en biología evolutiva 
+                cuyo trabajo ha inspirado y fundamentado el desarrollo de MultiMapR.</p>
+            </div>
+
+            <div class="card">
+                <h3>Software de Código Abierto</h3>
+                <p>MultiMapR se beneficia del ecosistema de software libre y de código abierto, particularmente:</p>
+                <ul>
+                    <li>R Project for Statistical Computing</li>
+                    <li>Paquetes ape, phytools, ggplot2</li>
+                    <li>Comunidad CRAN y Bioconductor</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Recursos Adicionales -->
+        <section class="container mt-5">
+            <h2>🔗 Recursos Adicionales</h2>
+            
+            <div class="card">
+                <h3>Bases de Datos Paleontológicas</h3>
+                <ul>
+                    <li>
+                        <a href="https://paleobiodb.org/" target="_blank" class="link">
+                            Paleobiology Database (PBDB)
+                        </a>
+                        <p class="text-muted small">Base de datos global de fósiles y datos paleontológicos</p>
+                    </li>
+                    <li>
+                        <a href="https://www.morphobank.org/" target="_blank" class="link">
+                            MorphoBank
+                        </a>
+                        <p class="text-muted small">Repositorio de matrices de caracteres morfológicos</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Comunidades de Análisis Filogenético</h3>
+                <ul>
+                    <li>
+                        <a href="https://www.r-phylo.org/" target="_blank" class="link">
+                            R-sig-phylo Mailing List
+                        </a>
+                        <p class="text-muted small">Lista de correo para discusiones sobre filogenética en R</p>
+                    </li>
+                    <li>
+                        <a href="https://evolution.genetics.washington.edu/phylip.html" target="_blank" class="link">
+                            PHYLIP - Phylogeny Inference Package
+                        </a>
+                        <p class="text-muted small">Software clásico de análisis filogenético</p>
+                    </li>
+                </ul>
             </div>
         </section>
     </main>

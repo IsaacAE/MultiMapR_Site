@@ -6,6 +6,94 @@
     <title>Ejemplos - MultiMapR</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para imágenes - Mobile First */
+        .image-wrapper {
+            width: 100%;
+            margin: 1.5rem 0;
+            padding: 0;
+        }
+
+        .result-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .result-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Para pantallas pequeñas (móviles) */
+        @media (max-width: 576px) {
+            .result-image {
+                border-radius: 5px;
+            }
+            
+            .image-wrapper {
+                margin: 1rem 0;
+            }
+        }
+
+        /* Para tablets */
+        @media (min-width: 577px) and (max-width: 992px) {
+            .image-wrapper {
+                max-width: 90%;
+                margin: 1.5rem auto;
+            }
+        }
+
+        /* Para escritorio */
+        @media (min-width: 993px) {
+            .image-wrapper {
+                max-width: 85%;
+                margin: 2rem auto;
+            }
+        }
+
+        /* Galería de imágenes (si tienes múltiples) */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .image-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .image-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        /* Caption para imágenes */
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--color-accent-hover);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Contenedor para zoom en imágenes */
+        .zoomable {
+            cursor: zoom-in;
+        }
+
+        .zoomable:active {
+            cursor: zoom-out;
+        }
+    </style>
 </head>
 <body>
     <!-- Encabezado -->
@@ -25,6 +113,9 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Inicio</a>
             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="problematica.html">Problemática</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link active" href="ejemplos.html">Ejemplos</a>
             </li>
@@ -42,25 +133,25 @@
         <!-- Introducción -->
         <section class="container mt-5">
             <h2>📊 Casos de Estudio</h2>
-            <p>MultiMapR ha sido diseñado para facilitar análisis complejos de caracteres morfológicos discretos en filogenias. 
+            <p>MultiMapR ha sido diseñado para facilitar análisis complejos de caracteres morfológicos en filogenias. 
             A continuación se presentan ejemplos representativos de las aplicaciones del software en investigación paleontológica.</p>
         </section>
 
         <!-- Ejemplo 1: Convergencia Evolutiva -->
         <section class="container mt-5">
-            <h2>🔄 Ejemplo 1: Análisis de Estados de caracter en filogenia de gran escala</h2>
+            <h2>🔄 Ejemplo 1: Análisis de Múltiples estados de carácter</h2>
             
             <div class="highlight-box">
                 <h3>Contexto</h3>
-                <p>Estudio del ambiente en el que habitaban distintas especies de pterosaurios</p>
+                <p>Estudio del entorno de hábitat de un conjunto de especies de pterosaurios</p>
             </div>
 
             <div class="card">
                 <h3>Datos de Entrada</h3>
                 <ul>
-                    <li><strong>Filogenia:</strong> 90 especies de pterosaurios </li>
-                    <li><strong>Caracteres analizados:</strong> 3 posibles estados de caracter para el hábitat</li>
-                    <li><strong>Estados:</strong> Terrestre/Marino/Desconocido</li>
+                    <li><strong>Filogenia:</strong> 90 especies de reptiles voladores (pterosaurios)</li>
+                    <li><strong>Caracteres analizados:</strong> 4 datos de relacionados con los entornos de desarrollo</li>
+                    <li><strong>Estados:</strong> Distinción de hábitats en las que se desarrollaron las especies</li>
                 </ul>
             </div>
 
@@ -69,77 +160,130 @@
                 <ol>
                     <li>Carga de filogenia en formato Newick (.tree)</li>
                     <li>Importación de matriz de caracteres (CSV)</li>
-                    <li>Visualización simultánea de los 3 caracteres</li>
+                    <li>Visualización simultánea de los 4 estados de carácter</li>
                 </ol>
             </div>
-<div class="card">
-	<h3>Resultados Obtenidos</h3>
 
-	<ul>
-		<li>Identificación de 3 estados de caracter a través de la historia evolutiva en la filogenia</li>
-	</ul>
-
-	<!-- Imagen (mobile-first) -->
-	<div class="image-wrapper">
-		<img src="images/PterosEstados.png" alt="Resultados obtenidos" class="result-image">
-	</div>
-</div>
+            <div class="card">
+                <h3>Resultados Obtenidos</h3>
+                <ul>
+                    <li>Identificación de 4 estados de carácter a través de la historia evolutiva en la filogenia</li>
+                </ul>
+                
+                <!-- Imagen responsive con caption -->
+                <div class="image-wrapper">
+                    <img src="images/PterosEstados.png" 
+                         alt="Filogenia de pterosaurios mostrando distribución de hábitats" 
+                         class="result-image zoomable"
+                         loading="lazy">
+                    <p class="image-caption">Figura 1: Distribución de estados de hábitat en pterosaurios</p>
+                </div>
+            </div>
         </section>
 
         <!-- Ejemplo 2: Análisis de Paralelismos -->
         <section class="container mt-5">
-            <h2>↔️ Ejemplo 2: Rastreo de Paralelismos Morfológicos</h2>
+            <h2>↔️ Ejemplo 2: Mapeo de múltiples caracteres de forma simultánea</h2>
             
             <div class="highlight-box">
                 <h3>Contexto</h3>
-                <p>Investigación sobre la evolución de estructuras postcraniales en dinosaurios terópodos, 
-                enfocándose en modificaciones relacionadas con locomoción y vuelo.</p>
+                <p>La presencia y evolución de distintos caracteres y sus estados a través de la historia evolutiva de un conjunto de cetáceos.</p>
             </div>
 
             <div class="card">
                 <h3>Datos de Entrada</h3>
                 <ul>
-                    <li><strong>Filogenia:</strong> 60 especies de terópodos (desde formas basales hasta aves modernas)</li>
-                    <li><strong>Caracteres analizados:</strong> 8 rasgos de extremidades anteriores y cintura escapular</li>
-                    <li><strong>Estados:</strong> Múltiples estados morfológicos (0-3 por carácter)</li>
+                    <li><strong>Filogenia:</strong> 23 especies de cetáceos (desde formas basales hasta ballenas modernas)</li>
+                    <li><strong>Caracteres analizados:</strong> rasgos del tamaño del bulbo olfativo y número de etmoturbinales</li>
+                    <li><strong>Estados:</strong> Múltiples estados morfológicos (3 por carácter)</li>
                 </ul>
             </div>
 
             <div class="card">
                 <h3>Ventajas de MultiMapR en este Análisis</h3>
                 <ul>
-                    <li><strong>Visualización integrada:</strong> Los 8 caracteres se visualizan simultáneamente, permitiendo detectar patrones complejos</li>
-                    <li><strong>Reconstrucción ancestral:</strong> DELTRAN utilizado para inferir estados en nodos internos</li>
-                    <li><strong>Personalización visual:</strong> Paleta de colores específica para cada tipo de modificación ósea</li>
+                    <li><strong>Visualización integrada:</strong> Los caracteres se visualizan simultáneamente, permitiendo detectar patrones complejos</li>
+                    <li><strong>Reconstrucción ancestral:</strong> Utilizado para inferir estados en nodos internos</li>
+                    <li><strong>Personalización visual:</strong> Paleta de colores específica para cada tipo de estado morfológico</li>
+                </ul>
+            </div>
+
+              <div class="card">
+                <h3>Resultados Obtenidos</h3>
+                <ul>
+                    <li>Identificación de correlaciones entre estados de caracter de distintos rasgos morfológicos</li>
+                </ul>
+                
+                <!-- Imagen responsive con caption -->
+                <div class="image-wrapper">
+                    <img src="images/Ballenas1.png" 
+                         alt="Filogenia de ballenas mostrando multimapeo sobrepuesto" 
+                         class="result-image zoomable"
+                         loading="lazy">
+                    <p class="image-caption">Figura 2: multimapeo simultáneo de distintos estados de carácter para 2 rasgos morfológicos</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="container mt-5">
+            <h2>↔️ Ejemplo 3: Mapeo de múltiples caracteres de forma simultánea</h2>
+            
+            <div class="highlight-box">
+                <h3>Contexto</h3>
+                <p>La presencia y evolución de distintos caracteres y sus estados a través de la historia evolutiva de un conjunto de cetáceos.</p>
+            </div>
+
+            <div class="card">
+                <h3>Datos de Entrada</h3>
+                <ul>
+                    <li><strong>Filogenia:</strong> 23 especies de cetáceos (desde formas basales hasta ballenas modernas)</li>
+                    <li><strong>Caracteres analizados:</strong> rasgos del tamaño del bulbo olfativo y número de etmoturbinales</li>
+                    <li><strong>Estados:</strong> Múltiples estados morfológicos (3 por carácter)</li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3>Descubrimientos</h3>
+                <h3>Ventajas de MultiMapR en este Análisis</h3>
                 <ul>
-                    <li>Evolución paralela de elongación de falanges en 4 linajes independientes</li>
-                    <li>Reducción convergente de dedos en grupos adaptados a carrera</li>
-                    <li>Transiciones graduales hacia morfología aviar en múltiples caracteres</li>
+                    <li><strong>Visualización integrada:</strong> Los caracteres se visualizan simultáneamente, permitiendo detectar la presencia de estados de caracter de forma sencilla</li>
+                    <li><strong>Formato "tabla":</strong> Utilizado para mostrar la información de los taxones de forma sencilla y ordenada</li>
+                    <li><strong>Personalización visual:</strong> Paleta de colores específica para cada tipo de estado morfológico</li>
                 </ul>
+            </div>
+
+              <div class="card">
+                <h3>Resultados Obtenidos</h3>
+                <ul>
+                    <li>Identificación de múltiples estados de caracter en los taxones de una filogenia</li>
+                </ul>
+                
+                <!-- Imagen responsive con caption -->
+                <div class="image-wrapper">
+                    <img src="images/Ballenas2.png" 
+                         alt="Filogenia de ballenas mostrando multimapeo tabla" 
+                         class="result-image zoomable"
+                         loading="lazy">
+                    <p class="image-caption">Figura 3: multimapeo simultáneo de distintos estados de carácter para 2 rasgos morfológicos en formato de tabla</p>
+                </div>
             </div>
         </section>
 
         <!-- Ejemplo 3: Regresiones Evolutivas -->
         <section class="container mt-5">
-            <h2>⬇️ Ejemplo 3: Detección de Regresiones</h2>
+            <h2>⬇️ Ejemplo 4: Reconstrucción de estados ancestrales</h2>
             
             <div class="highlight-box">
                 <h3>Contexto</h3>
-                <p>Análisis de la pérdida de estructuras visuales en peces cavernícolas, 
-                documentando la regresión de rasgos oculares en especies trogloditas.</p>
+                <p>Análisis y reconstrucción de caracteres "conflictivos" que podrían tomar distintos estados de carácter, aplicado a una filogenia de murciélagos</p>
             </div>
 
             <div class="card">
                 <h3>Configuración del Análisis</h3>
                 <ul>
-                    <li><strong>Taxa incluidos:</strong> 35 especies (epigeas y trogloditas)</li>
-                    <li><strong>Caracteres:</strong> 6 rasgos del sistema visual (ojos, pigmentación, nervio óptico)</li>
-                    <li><strong>Método:</strong> Algoritmo de Fitch no ambiguo</li>
+                    <li><strong>Taxa incluidos:</strong> 17 especies </li>
+                    <li><strong>Caracteres:</strong> 4 rasgos de un mismo caracter (C22)</li>
+                    <li><strong>Método:</strong> Algoritmo de Fitch ACCTRAN</li>
                 </ul>
             </div>
 
@@ -147,86 +291,39 @@
                 <h3>Funcionalidades Clave Utilizadas</h3>
                 <ul>
                     <li>Mapeo de estados sobre ramas para identificar puntos de transición</li>
-                    <li>Visualización de pérdida gradual vs. abrupta de caracteres</li>
-                    <li>Comparación de tasas de regresión entre linajes</li>
+                    <li>Visualización de paralelismos y divergencias</li>
                 </ul>
             </div>
-        </section>
-
-        <!-- Ejemplo 4: Workflow Completo -->
-        <section class="container mt-5">
-            <h2>🔬 Ejemplo 4: Workflow Completo de Análisis</h2>
-            
-            <div class="card">
-                <h3>Paso 1: Preparación de Datos</h3>
-                <p><strong>Archivo de filogenia (example.tree):</strong></p>
-                <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; overflow-x: auto;">
-((((Taxon_A:0.5,Taxon_B:0.5):0.3,(Taxon_C:0.4,Taxon_D:0.4):0.4):0.2,
-Taxon_E:1.0):0.1,Taxon_F:1.1);
-                </pre>
-            </div>
 
             <div class="card">
-                <h3>Paso 2: Matriz de Caracteres</h3>
-                <p><strong>Archivo CSV (characters.csv):</strong></p>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Taxon</th>
-                            <th>Char_1</th>
-                            <th>Char_2</th>
-                            <th>Char_3</th>
-                            <th>Char_4</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Taxon_A</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
-                        <tr><td>Taxon_B</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
-                        <tr><td>Taxon_C</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-                        <tr><td>Taxon_D</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
-                        <tr><td>Taxon_E</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-                        <tr><td>Taxon_F</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="card">
-                <h3>Paso 3: Código R Básico</h3>
-                <pre style="background: #f5f5f5; padding: 1rem; border-radius: 5px; overflow-x: auto;">
-# Cargar librería
-library(MultiMapR)
-
-# Importar datos
-tree <- read.tree("example.tree")
-characters <- read.csv("characters.csv", row.names = 1)
-
-# Realizar análisis
-result <- multimap(tree, characters, 
-                   method = "fitch",
-                   optimization = "ACCTRAN")
-
-# Visualizar resultados
-plot_multimap(result, 
-              colors = c("red", "blue", "green", "yellow"),
-              show_states = TRUE,
-              branch_width = 2)
-                </pre>
-            </div>
-
-            <div class="card">
-                <h3>Paso 4: Interpretación</h3>
+                <h3>Resultados Obtenidos</h3>
                 <ul>
-                    <li>Cada carácter se visualiza en una columna diferente al final de las terminales</li>
-                    <li>Los colores indican diferentes estados (0=ausencia, 1=presencia)</li>
-                    <li>Las reconstrucciones ancestrales aparecen en los nodos internos</li>
-                    <li>Las transiciones se marcan sobre las ramas del árbol</li>
+                    <li>Identificación de múltiples estados de caracter en los taxones de una filogenia</li>
+                      <li>Reconstrucción de caracteres ancestrales según el método (ACCTRAN/DELTRAN)</li>
                 </ul>
-            </div>
+                
+                <!-- Imagen responsive con caption -->
+                <div class="image-wrapper">
+                    <img src="images/Acctran winclada.png" 
+                         alt="Filogenia de murciélagos ACCTRAN" 
+                         class="result-image zoomable"
+                         loading="lazy">
+                    <p class="image-caption">Figura 4: Reconstrucción de estados ancestrales usando método ACCTRAN</p>
+                </div>
+
+                 <div class="image-wrapper">
+                    <img src="images/deltran winclada.png" 
+                         alt="Filogenia de murciélagos DELTRAN" 
+                         class="result-image zoomable"
+                         loading="lazy">
+                    <p class="image-caption">Figura 5: Reconstrucción de estados ancestrales usando método DELTRAN</p>
+                </div>
         </section>
 
+       
         <!-- Recursos Adicionales -->
         <section class="container mt-5">
-            <h2>📚 Recursos para Usuarios</h2>
+            <h2>📚 Recursos para Usuarios próximos</h2>
             
             <div class="card">
                 <h3>Tutoriales Disponibles</h3>
@@ -241,10 +338,10 @@ plot_multimap(result,
             <div class="card">
                 <h3>Próximas Funcionalidades</h3>
                 <ul>
-                    <li>Exportación directa a formatos de publicación</li>
-                    <li>Análisis estadísticos integrados</li>
-                    <li>Interfaz gráfica interactiva (Shiny)</li>
-                    <li>Soporte para caracteres continuos</li>
+                    <li>Análisis de caracteres continuos</li>
+                    <li>Uso de distintos algoritmos para reconstrucción de caracteres ancestrales</li>
+                    <li>Interfaz gráfica interactiva </li>
+                    <li>Mejora de multimapeo simultáneo</li>
                 </ul>
             </div>
         </section>
